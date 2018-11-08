@@ -38,7 +38,8 @@ public class QuoteController {
   }
 
   @GetMapping(value = "search", produces = MediaType.APPLICATION_JSON_VALUE)
-  public List<Quote> search(@RequestParam("text") String text, @RequestParam("source")String source ) {
+  public List<Quote> search(@RequestParam(value = "text") String text,
+      @RequestParam(value = "source")String source ) {
     List<Quote> response = null;
     if (text != null && source == null) {
       response = quoteRepository.findAllByTextContainingOrderByText(text);
